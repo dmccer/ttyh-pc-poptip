@@ -1,0 +1,27 @@
+{
+  "name": "ttyh-pc-poptip",
+  "version": "1.0.0",
+  "description": "ttyh-pc-poptip",
+  "main": "index.js",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "react": "^15.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmccer/ttyh-pc-poptip.git"
+  },
+  "keywords": [
+    "poptip"
+  ],
+  "author": "Kane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmccer/ttyh-pc-poptip/issues"
+  },
+  "homepage": "https://github.com/dmccer/ttyh-pc-poptip#readme"
+}
