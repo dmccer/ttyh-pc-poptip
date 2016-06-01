@@ -2,7 +2,9 @@ import './index.less';
 
 import React from 'react';
 import classNames from 'classnames';
+import TTimers from 'ttyh-timers';
 
+@TTimers
 export default class Poptip extends React.Component {
   constructor() {
     super();
@@ -10,10 +12,6 @@ export default class Poptip extends React.Component {
     this.state = {
       tips: []
     };
-  }
-
-  componentWillUnmount() {
-    this.timeout && this.timeout.clearTimeout();
   }
 
   show(type: string, msg: string, timeout=3000: number) {
@@ -34,7 +32,7 @@ export default class Poptip extends React.Component {
     this.state.tips.push(tip);
     this.forceUpdate();
 
-    this.timeout = setTimeout(this.close.bind(this, tip), timeout);
+    this.props.setTimeout(this.close.bind(this, tip), timeout);
   }
 
   success(msg: string) {
