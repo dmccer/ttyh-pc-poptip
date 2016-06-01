@@ -12,6 +12,10 @@ export default class Poptip extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    this.timeout && this.timeout.clearTimeout();
+  }
+
   show(type: string, msg: string, timeout=3000: number) {
     const tip = {
       type: type,
@@ -30,7 +34,7 @@ export default class Poptip extends React.Component {
     this.state.tips.push(tip);
     this.forceUpdate();
 
-    setTimeout(this.close.bind(this, tip), timeout);
+    this.timeout = setTimeout(this.close.bind(this, tip), timeout);
   }
 
   success(msg: string) {
