@@ -2,17 +2,12 @@ import './index.less';
 
 import React from 'react';
 import classNames from 'classnames';
-import TTimers from 'ttyh-timers';
+import Tip from './tip';
 
-@TTimers
 export default class Poptip extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      tips: []
-    };
-  }
+  state = {
+    tips: []
+  };
 
   show(type: string, msg: string, timeout=3000: number) {
     const tip = {
@@ -20,8 +15,10 @@ export default class Poptip extends React.Component {
       msg: msg
     };
 
+    const tips = this.state.tips;
+
     // 同一提示不重复显示
-    let hasTip = this.state.tips.filter((item) => {
+    let hasTip = tips.filter((item) => {
       return tip.type === item.type && tip.msg === item.msg;
     });
 
@@ -29,10 +26,9 @@ export default class Poptip extends React.Component {
       return;
     }
 
-    this.state.tips.push(tip);
-    this.forceUpdate();
+    tips.push(tip);
 
-    this.props.setTimeout(this.close.bind(this, tip), timeout);
+    this.setState({ tips });
   }
 
   success(msg: string) {
@@ -52,22 +48,17 @@ export default class Poptip extends React.Component {
   }
 
   close(tip: Object) {
-    const index = this.state.tips.indexOf(tip);
-    this.state.tips.splice(index, 1);
-
-    this.forceUpdate();
+    let tips = this.state.tips;
+    const index = tips.indexOf(tip);
+    tips.splice(index, 1);
+    this.setState({ tips });
   }
 
   render() {
     let tipList = this.state.tips.map((tip, index) => {
       return (
-        <div
-          className="poptip-cnt"
-          key={'poptip_' + index}
-          onClick={this.close.bind(this, tip)}>
-          <i className={classNames('icon', 'icon-' + tip.type)}></i>{tip.msg}
-        </div>
-      )
+        <Tip close={this.close.bind(this, tip)} index={index} />
+      );
     });
 
     return (
