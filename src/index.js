@@ -57,7 +57,7 @@ export default class Poptip extends React.Component {
   render() {
     let tipList = this.state.tips.map((tip, index) => {
       return (
-        <Tip close={this.close.bind(this, tip)} index={index} />
+        <Tip key={`tip_item_${index}`} close={this.close.bind(this, tip)} />
       );
     });
 
