@@ -1,6 +1,6 @@
 {
   "name": "ttyh-pc-poptip",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "ttyh-pc-poptip",
   "main": "dist/index.js",
   "dest": "dist",
