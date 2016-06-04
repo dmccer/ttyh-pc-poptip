@@ -62,6 +62,7 @@ export default class Poptip extends React.Component {
           key={`tip_item_${index}`}
           close={this.close.bind(this, tip)}
           timeout={tip.timeout}
+          tip={tip}
         />
       );
     });

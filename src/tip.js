@@ -12,7 +12,7 @@ export default class Tip extends React.Component {
   }
 
   render() {
-    let { index, close, ...tip } = this.props;
+    let { index, close, tip } = this.props;
 
     return (
       <div
