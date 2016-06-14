@@ -6,7 +6,7 @@ function addTo(type, args) {
   EE.emit('add/tip', type, ...args);
 }
 
-export const Tipr = {
+export const TipEmitter = {
   success(...args) { addTo('ok', args); },
   error(...args) { addTo('error', args); },
   info(...args) { addTo('info', args); },
