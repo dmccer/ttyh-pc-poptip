@@ -4,7 +4,22 @@ import React from 'react';
 import classNames from 'classnames';
 import Tip from './tip';
 
-export default class Poptip extends React.Component {
+import EventEmitter from 'eventemitter3';
+
+const EE = new EventEmitter();
+
+function addTo(type, args) {
+  EE.emit('add/tip', type, ...args);
+}
+
+export const Tipr = {
+  success(...args) { addTo('ok', args); },
+  error(...args) { addTo('error', args); },
+  info(...args) { addTo('info', args); },
+  warn(...args) { addTo('warn', args); }
+}
+
+export default class TipContainer extends React.Component {
   state = {
     tips: []
   };
@@ -32,20 +47,12 @@ export default class Poptip extends React.Component {
     this.setState({ tips });
   }
 
-  success(msg: string) {
-    this.show('ok', msg);
+  componentDidMount() {
+    EE.on('add/tip', this.show.bind(this));
   }
 
-  error(msg: string) {
-    this.show('error', msg);
-  }
-
-  info(msg: string) {
-    this.show('info', msg);
-  }
-
-  warn(msg: string) {
-    this.show('warning', msg);
+  componentWillUnmount() {
+    EE.removeListener('add/tip');
   }
 
   close(tip: Object) {
