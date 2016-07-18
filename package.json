@@ -1,14 +1,13 @@
 {
   "name": "ttyh-pc-poptip",
-  "version": "2.0.3",
+  "version": "2.0.11",
   "description": "ttyh-pc-poptip",
   "main": "dist/index.js",
   "dest": "dist",
   "dependencies": {
     "classnames": "^2.2.5",
     "eventemitter3": "^1.2.0",
-    "react": "^15.1.0",
-    "ttyh-timers": "^1.0.2"
+    "react": "^15.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.9.1",

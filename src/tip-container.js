@@ -42,7 +42,9 @@ export default class TipContainer extends React.Component {
     EE.removeListener('add/tip');
   }
 
-  close(tip: Object) {
+  close(tid, tip: Object) {
+    tid && clearTimeout(tid);
+
     let tips = this.state.tips;
     const index = tips.indexOf(tip);
     tips.splice(index, 1);

@@ -2,13 +2,14 @@ import './index.less';
 
 import React from 'react';
 import classNames from 'classnames';
-import TTimers from 'ttyh-timers';
 
-@TTimers
 export default class Tip extends React.Component {
   componentWillMount() {
-    let props = this.props;
-    props.setTimeout(props.close, props.timeout);
+    const { timeout, close } = this.props;
+
+    let tid = setTimeout(() => {
+      close.call(null, tid);
+    }, timeout);
   }
 
   render() {
